@@ -1,1 +1,23 @@
+title: Coding Guidelines
+lang: en
+
 remote_theme: rundocs/jekyll-rtd-theme
+
+readme_index:
+  with_frontmatter: true
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - Makefile
+
+markdown: kramdown
+
+plugins:
+  - jekyll-default-layout
+  - jemoji
+  - jekyll-avatar
+  - jekyll-mentions
+  - jekyll-titles-from-headings
+  - jekyll-readme-index
+
