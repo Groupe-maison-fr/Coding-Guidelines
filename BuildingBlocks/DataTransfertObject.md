@@ -39,7 +39,7 @@ final class fooDto
 
     public function getPropertyB(): string
     {
-        return $this->property>B;
+        return $this->propertyB;
     }
 }
 
