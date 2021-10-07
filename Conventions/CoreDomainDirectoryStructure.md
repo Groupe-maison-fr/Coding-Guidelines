@@ -7,18 +7,26 @@ sort: 4
 ```
 src/Core/_template
 ├── Application
+│   ├── DomainQuery
 │   ├── Event
+│   ├── EventListener
+│   ├── EventSubscriber
 │   ├── Exception
 │   ├── Query
 │   │   └── DQL
 │   ├── Repository
 │   │   └── DQL
 │   ├── Service
-│   ├── Specifications
-│   └── UseCase
-└── Domain
-    ├── Entity
-    ├── Enum
-    ├── Id
-    └── Type
+│   ├── Specification
+│   ├── Strategy
+│   ├── UseCase
+│   └── Voter
+├── DataFixtures
+├── Domain
+│   ├── Entity
+│   ├── Enum
+│   └── Id
+└── Infrastructure
+    ├── Graphql
+    └── Persistence
 ```
