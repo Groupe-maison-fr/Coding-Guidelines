@@ -29,22 +29,18 @@ Fluent mapping is adapted for value object.
 
 ```php
 
-class Address implements JsonSerializable {
-    private $city;
-    private $country;
-    private $postalCode;
-    private $streetAddress;
+final class Address implements JsonSerializable {
 
-  function __construct(string $city, string $country, string $postalCode, string $streetAddress){
-            Assert::that($city)->minLength(5);
-            Assert::that($ccountry)->minLength(10);
-            Assert::that($postalCode)->regex("#^[0-9]{5,7}$#");
-            Assert::that($streetAddress)->minLength(10);
-
-            $this->city = $city;
-            $this->country = $country;
-            $this->postalCode = $postalCode;
-            $this->streetAddress = $streetAddress;
+  function __construct(
+    private string $city, 
+    private string $country, 
+    private string $postalCode, 
+    private string $streetAddress
+    ) {
+        Assert::that($city)->minLength(5);
+        Assert::that($ccountry)->minLength(10);
+        Assert::that($postalCode)->regex("#^[0-9]{5,7}$#");
+        Assert::that($streetAddress)->minLength(10);
     }
 
     function getCity(): string { return $this->city; }
@@ -63,12 +59,12 @@ class Address implements JsonSerializable {
 
     // I find it useful to be able to serialize/deserialize VOs in json representation (see interface JsonSerializable)
     function toArray(): array {
-            return [
-                'city' => $this->city,
-                'country' => $this->country,
-                'postalCode' => $this->postalCode,
-                'streetAddress' => $this->streetAddress
-            ];
+        return [
+            'city' => $this->city,
+            'country' => $this->country,
+            'postalCode' => $this->postalCode,
+            'streetAddress' => $this->streetAddress
+        ];
     }
 
     static function fromArray(array $input): self {

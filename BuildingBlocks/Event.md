@@ -12,13 +12,9 @@ sort: 8
 ```php
 final class CommentCreatedEvent implements EventInterface
 {
-    /**
-     * @var CommentId
-     */
-    private $commentId;
-
-    public function __construct(CommentId $commentId)
-    {
+    public function __construct(
+        private CommentId $commentId
+    ) {
         $this->commentId = $commentId;
     }
 
@@ -42,24 +38,12 @@ final class CommentCreatedEvent implements EventInterface
 
 ```php
 
-class CommentCreatedListener
+final class CommentCreatedListener
 {
-    /**
-     * @var PostQueryInterface
-     */
-    private $postQuery;
-
-    /**
-     * @var NotificationServiceInterface
-     */
-    private $notificationService;
-
     public function __construct(
-        PostQueryInterface $postQuery,
-        NotificationServiceInterface $notificationService
+        private PostQueryInterface $postQuery,
+        private NotificationServiceInterface $notificationService
     ) {
-        $this->postQuery = $postQuery;
-        $this->notificationService = $notificationService;
     }
 
     public function notifyPostAuthorAboutNewComment(CommentCreatedEvent $event): void

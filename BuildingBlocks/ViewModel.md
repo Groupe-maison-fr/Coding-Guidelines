@@ -9,16 +9,11 @@ A view model is a specialized **immutable dto**, linked to a **single template**
 ```php
 final class PostViewModel
 {
-    /**
-     * @var PostId
-     */
-    private $postId;
-
-    public function __construct(PostId $postId, string $title, string $slug)
-    {
-        $this->postId = $postId;
-        $this->title = $title;
-        $this->slug = $slug;
+    public function __construct(
+        private PostId $postId, 
+        private string $title, 
+        private string $slug
+    ) {
     }
 
     public static function fromPost(Post $post): self

@@ -15,32 +15,14 @@ _Commands are useful as they represent a single pathway to completing a state ch
 
 ```php
  
-class CreateUser implements Command
+final class CreateUserCommand implements Command
 {
-    /** @var Uuid */
-    private $id;
-
-    /** @var string */
-    private $username;
-
-    /** @var string */
-    private $password;
-
-    /** @var string */
-    private $display_name;
-
-    /**
-     * User constructor.
-     * @param Uuid $uuid
-     * @param string $username
-     * @param string $password
-     */
-    public function __construct(Uuid $uuid, $username, $displayName, $password)
-    {
-        $this->id = $uuid;
-        $this->username = $username;
-        $this->display_name = $displayName;
-        $this->password = $password
+    public function __construct(
+        private Uuid $uuid, 
+        private string $username, 
+        private string $displayName, 
+        private string $password
+    ) {
     }
 
     // ... getters
