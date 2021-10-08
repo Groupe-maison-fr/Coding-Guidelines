@@ -26,15 +26,11 @@ namespace DesignPatterns\More\Repository;
 use DesignPatterns\More\Repository\Domain\Post;
 use DesignPatterns\More\Repository\Domain\PostId;
 
-class PostRepository
+final class PostRepository
 {
-    /**
-     * @var Persistence
-     */
-    private $persistence;
-
-    public function __construct(Persistence $persistence)
-    {
+    public function __construct(
+        private Persistence $persistence
+    ) {
         $this->persistence = $persistence;
     }
 

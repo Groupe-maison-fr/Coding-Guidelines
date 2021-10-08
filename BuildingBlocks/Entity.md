@@ -15,30 +15,14 @@ They are **mutable** and **persistable**. However, you don't add getters and set
 ```php
 class Post
 {
-    /**
-     * @var PostId
-     */
-    private $id;
-
-    /**
-     * @var string
-     */
-    private $title;
-
-    /**
-     * @var string
-     */
-    private $slug;
-
+    private PostId $id;
+    private ?string $title;
+    private ?string $slug;
     /**
      * @var Tag[]
      */
-    private $tags = [];
-
-    /**
-     * @var bool
-     */
-    private $isNewPost = false;
+    private array $tags = [];
+    private bool $isNewPost = false;
 
     public function __construct()
     {
@@ -99,12 +83,11 @@ class Post
 
     /**
      * We don't want to have here any reference to doctrine, so we remove the Collection type hint from everywhere.
-     * The safest is to treat it as an array but we can't type hint it with 'array' because we might actually
-     * return an Collection.
+     * The safest is to treat it as an array.
      *
      * @return Tag[]
      */
-    public function getTags()
+    public function getTags(): array
     {
         return $this->tags;
     }

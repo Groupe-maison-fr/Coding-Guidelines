@@ -16,20 +16,10 @@ They are a composition of scalar, other DTOs and value objects. They are **immut
 
 final class fooDto
 {
-    /**
-     * @var int
-     */
-    private $propertyA;
-
-    /**
-     * @var string
-     */
-    private $propertyB;
-
-    public function __construct(int $propertyA, string $propertyB)
-    {
-        $this->propertyA = $propertyA;
-        $this->propertyB = $propertyB;
+    public function __construct(
+        private int $propertyA, 
+        private string $propertyB
+    ) {
     }
 
     public function getPropertyA(): int
